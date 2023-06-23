@@ -32,6 +32,9 @@ export default function Board() {
             } else break;
         }
 
+        console.log("Downwards Count: " + count);
+        if(count >= 4) console.log("downwards win");
+        if(count >= 4) return squares[lastPlaced];
         if(count >= 4) return squares[lastPlaced];
         
         //check sideways
@@ -47,13 +50,15 @@ export default function Board() {
         }
 
         for (var i = 1; i < 4; i++) {
-            if((lastPlaced - i) % 7 === 0) {
+            if((lastPlaced - i + 1) % 7 === 0) {
                 break;
             } else if (squares[lastPlaced-i] === squares[lastPlaced]) {
                 count++;
             } else break;
         }
 
+        console.log("Sideways Count: " + count);
+        if(count >= 4) console.log("sideways win");
         if(count >= 4) return squares[lastPlaced];
 
         //check diagonal 1
@@ -61,7 +66,7 @@ export default function Board() {
         count = 1;
 
         for (var i = 1; i < 4; i++) {
-            if((lastPlaced + i + i*7) % 7 === 0) {
+            if((lastPlaced + i) % 7 === 0) {
                 break;
             } else 
             if (squares[lastPlaced+i+i*7] === squares[lastPlaced]) {
@@ -70,7 +75,7 @@ export default function Board() {
         }
 
         for (var i = 1; i < 4; i++) {
-            if((lastPlaced - i - i*7) % 7 === 0) {
+            if((lastPlaced - i + 1) % 7 === 0) {
                 break;
             } else 
             if (squares[lastPlaced-i-i*7] === squares[lastPlaced]) {
@@ -78,19 +83,25 @@ export default function Board() {
             } else break;
         }
 
+        console.log("Diagonal 1 Count: " + count);
+        if(count >= 4) console.log("diagonal 1 win");
+        if(count >= 4) return squares[lastPlaced];
+        if(count >= 4) return squares[lastPlaced];
+
         //check diagonal 2
 
+        count = 1;
+
         for (var i = 1; i < 4; i++) {
-            if((lastPlaced + i - i*7) % 7 === 0) {
+            if((lastPlaced + i) % 7 === 0) {
                 break;
-            } else 
-            if (squares[lastPlaced+i-i*7] === squares[lastPlaced]) {
+            }else if (squares[lastPlaced+i-i*7] === squares[lastPlaced]) {
                 count++;
             } else break;
         }
 
         for (var i = 1; i < 4; i++) {
-            if((lastPlaced - i + i*7) % 7 === 0) {
+            if((lastPlaced - i + 1) % 7 === 0) {
                 break;
             } else 
             if (squares[lastPlaced-i+i*7] === squares[lastPlaced]) {
@@ -98,6 +109,9 @@ export default function Board() {
             } else break;
         }
 
+        console.log("Diagonal 2 Count: " + count);
+        if(count >= 4) console.log("diagonal 2 win");
+        if(count >= 4) return squares[lastPlaced];
         if(count >= 4) return squares[lastPlaced];
 
         return null;
