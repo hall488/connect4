@@ -1,5 +1,12 @@
-// index.js
+import React, { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./styles.css";
 
-const helloDiv = document.createElement("div");
-helloDiv.innerHTML = "Hello from Javascript!";
-document.body.append(helloDiv);
+import App from "./App";
+
+const root = createRoot(document.getElementById("root"));
+root.render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+);

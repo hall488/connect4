@@ -18,4 +18,22 @@ module.exports = {
       template: path.join(__dirname, "public", "index.html"),
     }),
   ],
+  module: {
+    // exclude node_modules
+    rules: [
+      {
+        test: /\.(js|jsx)$/,         // <-- added `|jsx` here
+        exclude: /node_modules/,
+        use: ["babel-loader"],
+      },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
+    ],
+  },
+  // pass all js files through Babel
+  resolve: {
+    extensions: ["*", ".js", ".jsx"],
+  }
 };
